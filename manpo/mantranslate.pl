@@ -17,7 +17,7 @@
 # If you use or distribute this code, I would appreciate receiving
 # credit for writing it, in whichever way you find proper and customary.
 
-use strict ; use warnings ;
+use strict ; use warnings ; use open IO => ':crlf';
 
 my ($gettext,$shipout) ;
 

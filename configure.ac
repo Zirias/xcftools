@@ -45,6 +45,12 @@ case $host_cpu in i?86 | x86_64 | powerpc)
       AC_DEFINE(CAN_DO_UNALIGNED_WORDS,1,
        [Define for CPUs that can read unaligned words without traps or faults])
 esac
+buildplatform=unix
+case "${host_os}" in
+	cygwin*|mingw*)
+    		buildplatform=win32
+    		;;
+esac
 AC_CHECK_HEADERS(inttypes.h netinet/in.h arpa/inet.h getopt.h)
 
 AC_CHECK_FUNCS(getopt_long strcasecmp)
@@ -52,6 +58,7 @@ AC_FUNC_MMAP
 AM_GNU_GETTEXT(external)
 AM_ICONV
 
+AC_SUBST(buildplatform)
 AC_PATH_PROG(PERL,perl,perl)
                         
 AC_CONFIG_HEADERS(config.h:config.hin)
